@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  rust-compiler:
+    build: .
+    ports:
+      - 80:80
+    volumes:
+        - .:/home
