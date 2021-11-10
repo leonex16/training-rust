@@ -3,14 +3,18 @@ log_info() {
   message=$1
   separator=${2-*}
 
-  echo $message
-  printf "${separator}%.0s" {1..100}
+  printf "\n%75s\n" | tr " " "${separator}"
+  printf "${message}"
+  printf "\n%75s\n" | tr " " "${separator}"
 }
 
 alias cr="cargo run"
+alias crf="cargo +nightly fmt && cargo run"
 
 log_info "Downloading necessary dependencies..."
 apk add build-base
+rustup default nightly
+rustup component add rustfmt --toolchain nightly
 cargo install cargo-watch
 
 if [[ ! -f Cargo.toml ]]
@@ -27,4 +31,3 @@ cargo watch --clear -x run
 
 
 exit
-
