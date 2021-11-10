@@ -1,6 +1,4 @@
-use std::io;
-use std::cmp::Ordering;
-use rand::Rng;
+
 
 fn main() {
     println!("*******************************************");
@@ -16,6 +14,9 @@ fn main() {
 
 /* Guessing Game - Chapter 2
     fn guessing_game() {
+        use std::io;
+        use std::cmp::Ordering;
+        use rand::Rng;
         println!("Guess the number!");
         println!("Please input your guess.");
 
