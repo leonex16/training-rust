@@ -7,7 +7,7 @@ log_info() {
   printf "${separator}%.0s" {1..100}
 }
 
-alias cr="cargo run"
+alias cwr="cargo watch -x run"
 
 log_info "Downloading necessary dependencies..."
 apk add build-base
@@ -24,7 +24,6 @@ fi
 
 chmod u+x ./init-docker.bash
 cargo watch --clear -x run
-
 
 exit
 

@@ -1,51 +1,35 @@
+use std::fs;
 
+mod chapter_2;
 
 fn main() {
     println!("*******************************************");
     println!("");
     // ****************************************************
     
-    // guessing_game();
+    //chapter_2::guessing_game();
 
+    let args: Vec<String> = std::env::args().collect();
+    let Config { query, filename} = Config::new(&args);
+
+    let content = fs::read_to_string(filename);
+    println!("{:#?}", query);
+    println!("{:#?}", content);
     // ****************************************************
     println!("");
     println!("*******************************************");
 }
 
-/* Guessing Game - Chapter 2
-    fn guessing_game() {
-        use std::io;
-        use std::cmp::Ordering;
-        use rand::Rng;
-        println!("Guess the number!");
-        println!("Please input your guess.");
+struct Config<'a> {
+    query: &'a str,
+    filename: &'a str
+}
 
-        let secret_number = rand::thread_rng().gen_range(1..=100); // .. start inclusive, end exclusive | ..= start and end inclusive
-
-        loop {
-            let mut guess = String::new();
-
-            io::stdin()
-                .read_line(&mut guess)
-                .expect("Failed to read line");
-            
-            let guess: u32 = match guess.trim().parse() {
-                Ok(num) => num,
-                Err(_) => continue,
-            }; // "Shadowing variable" Back assign an value to the same variable
-            println!("Secret number: {}", secret_number);
-            
-            println!("Your guessed: {}", guess);
-        
-        
-            match guess.cmp(&secret_number) {
-                Ordering::Less => println!("Too small!"),
-                Ordering::Greater => println!("Too big!"),
-                Ordering::Equal => {
-                    println!("You win!");
-                    break;
-                },
-            }
-        }
+impl<'a> Config<'a> {
+    fn new<'b: 'a>(args: &'b Vec<String>) -> Self {
+        let query = args[1].as_str();
+        let filename = args[2].as_str();
+    
+        Config { query, filename }
     }
-*/
+}
