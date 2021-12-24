@@ -1,35 +1,16 @@
-use std::fs;
-
 mod chapter_2;
+mod chapter_12;
 
 fn main() {
-    println!("*******************************************");
-    println!("");
-    // ****************************************************
-    
-    //chapter_2::guessing_game();
+  println!("*******************************************");
+  println!("");
+  // ****************************************************
 
-    let args: Vec<String> = std::env::args().collect();
-    let Config { query, filename} = Config::new(&args);
+  // chapter_2::guessing_game();
 
-    let content = fs::read_to_string(filename);
-    println!("{:#?}", query);
-    println!("{:#?}", content);
-    // ****************************************************
-    println!("");
-    println!("*******************************************");
-}
+  chapter_12::minigrep();
 
-struct Config<'a> {
-    query: &'a str,
-    filename: &'a str
-}
-
-impl<'a> Config<'a> {
-    fn new<'b: 'a>(args: &'b Vec<String>) -> Self {
-        let query = args[1].as_str();
-        let filename = args[2].as_str();
-    
-        Config { query, filename }
-    }
+  // ****************************************************
+  println!("");
+  println!("*******************************************");
 }

@@ -1,8 +1,9 @@
+// Guessing Game - Chapter 2
+
 use std::io;
 use std::cmp::Ordering;
 use rand::Rng;
 
-// Guessing Game - Chapter 2
 pub fn guessing_game() {
   println!("Guess the number!");
   println!("Please input your guess.");
