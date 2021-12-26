@@ -8,7 +8,7 @@ fn main() {
 
   // chapter_2::guessing_game();
 
-  chapter_12::minigrep();
+  // chapter_12::minigrep();
 
   // ****************************************************
   println!("");
